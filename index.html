@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sương Mù Tà Chìa</title>
+    <meta name="description"
+        content="Trải nghiệm nỗi sợ hãi tột cùng giữa vùng núi sương mù Tây Bắc trong tựa game sinh tồn kinh dị pixel Sương Mù Tà Chìa.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    git config --global user.name "Tên của bạn"
+    git config --global user.email "email@example.com"
+</head>
+
+<body>
+    <div id="noise-overlay"></div>
+    <div id="lantern-overlay"></div>
+    <div id="blood-overlay">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none"
+            style="width:100%; height:100%; position:absolute; top:0; left:0; pointer-events:none;">
+            <!-- Top Left Veins -->
+            <path d="M0,0 Q10,15 15,30 M0,0 Q25,8 40,12 M15,30 Q8,45 5,60 M25,8 Q35,25 30,45"
+                stroke="rgba(200, 0, 0, 0.6)" stroke-width="0.8" fill="none" class="blood-vein" />
+            <!-- Top Right Veins -->
+            <path d="M100,0 Q90,20 80,35 M100,0 Q75,10 65,15 M80,35 Q85,50 90,65" stroke="rgba(200, 0, 0, 0.6)"
+                stroke-width="0.8" fill="none" class="blood-vein" />
+            <!-- Bottom Left Veins -->
+            <path d="M0,100 Q15,90 20,75 M0,100 Q20,95 35,90" stroke="rgba(200, 0, 0, 0.6)" stroke-width="0.8"
+                fill="none" class="blood-vein" />
+            <!-- Bottom Right Veins -->
+            <path d="M100,100 Q80,85 75,70 M100,100 Q85,95 70,92" stroke="rgba(200, 0, 0, 0.6)" stroke-width="0.8"
+                fill="none" class="blood-vein" />
+        </svg>
+    </div>
+
+    <nav id="navbar">
+        <div class="logo">Sương Mù Tà Chìa</div>
+        <ul class="nav-links">
+            <li><a href="#about">Cốt Truyện</a></li>
+            <li><a href="#features">Tính Năng</a></li>
+            <li><a href="#gallery">Thư Viện</a></li>
+        </ul>
+    </nav>
+
+    <header id="hero">
+        <div class="fog-container">
+            <div class="fog-img fog-1"></div>
+            <div class="fog-img fog-2"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="glitch" data-text="Sương Mù Tà Chìa">Sương Mù Tà Chìa</h1>
+            <p>Sự im lặng nơi rẻo cao đang che giấu những điều không nên thức tỉnh...</p>
+            <button class="btn-primary glitch-btn" id="play-btn">Chơi Bản Demo</button>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Nỗi Ám Ảnh Vùng Sơn Cước</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Trong "Sương Mù Tà Chìa", bạn vào vai một nhà nghiên cứu văn hóa dân gian bị lạc bước vào một
+                        ngôi làng hẻo lánh sâu trong dãy núi Hoàng Liên Sơn. Những cư dân ở đây có những tập tục kỳ lạ,
+                        và mỗi khi màn đêm sương mù buông xuống, những âm thanh rùng rợn lại vang lên từ khu rừng
+                        thiêng.</p>
+                    <p>Bạn phải tìm cách sinh tồn, giải mã những bí ẩn được chôn vùi từ hàng trăm năm trước dựa trên các
+                        truyền thuyết có thật của các dân tộc vùng cao, và quan trọng nhất: Đừng bao giờ dập tắt ngọn
+                        đèn lồng của mình.</p>
+                    <p class="explorer-hint">Ghi chú cho những kẻ tò mò: Hãy cẩn thận với những gì bị vứt bỏ ở tận cùng
+                        của bóng tối, đôi khi sự thật hiển hiện khi bạn vô tình lướt qua chúng... <span
+                            class="ritual-item" id="item-talisman" data-id="talisman" title="Bùa Hộ Mệnh">📜</span></p>
+                </div>
+                <div class="about-image-wrapper">
+                    <div class="pixel-frame">
+                        <img src="assets/screen_2.png" id="about-img" alt="Hình ảnh bản làng trong sương mù"
+                            class="pixelated">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section dark-bg">
+        <div class="container">
+            <h2 class="section-title">Sinh Tồn Trong Tuyệt Vọng</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🏮</div>
+                    <h3>Quản Lý Ánh Sáng</h3>
+                    <p>Dầu thắp là sự sống. Bóng tối không chỉ che khuất tầm nhìn mà còn chứa đựng những "thứ" đang thèm
+                        khát bạn.</p>
+                    <span class="ritual-item" id="item-oil" data-id="oil" title="Bình Dầu Thắp">🪔</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📜</div>
+                    <h3>Truyền Thuyết Dân Gian</h3>
+                    <p>Chạm trán với những thực thể tâm linh lấy cảm hứng từ những câu chuyện ma mị truyền miệng của
+                        vùng Tây Bắc.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🧩</div>
+                    <h3>Giải Mã Bí Ẩn</h3>
+                    <p>Khám phá bản làng bỏ hoang, thu thập các mảnh ghép để tìm ra sự thật khủng khiếp đằng sau lời
+                        nguyền.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">Những Thước Phim Đẫm Máu</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item pixel-frame">
+                    <img src="assets/screen_1.png" id="gallery-img-1" alt="Screenshot 1" class="pixelated">
+                    <span class="ritual-item" id="item-key" data-id="key" title="Chiếc Chìa Khóa Gỉ">🔑</span>
+                </div>
+                <div class="gallery-item pixel-frame">
+                    <img src="assets/screen_2.png" id="gallery-img-2" alt="Screenshot 2" class="pixelated">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Sương Mù Tà Chìa. Mọi quyền được bảo lưu.</p>
+            <p class="warning-text">Trò chơi chứa đựng những hình ảnh rùng rợn. Không dành cho người yếu tim.</p>
+            <p class="hidden-secret" title="?">??????????
+            </p>
+            <span class="ritual-item" id="item-censer" data-id="censer" title="Lư Hương Cổ">🏺</span>
+        </div>
+    </footer>
+
+    <!-- Audio Effects -->
+    <audio id="hover-sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"
+        preload="auto"></audio>
+    <audio id="click-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+        preload="auto"></audio>
+
+    <!-- Demo Popup -->
+    <div id="demo-popup" class="popup-overlay">
+        <div class="popup-content pixel-frame">
+            <span class="close-demo-btn close-btn">&times;</span>
+            <h3 class="popup-title glitch" style="margin-bottom: 1.5rem;" data-text="THÔNG BÁO">THÔNG BÁO</h3>
+            <p
+                style="text-align: center; color: #dcdcdc; font-size: 1.1rem; line-height: 1.8; font-family: 'Courier New', Courier, monospace; font-weight: bold; text-shadow: 1px 1px 2px #000;">
+                Hiện tại <span style="color: #ff1a1a;">Sương Mù Tà Chìa</span> chưa có bản demo chính thức.<br>
+                rất mong mọi người có thể kiên nhẫn, chờ đợi và ủng hộ sản phẩm của studio bọn mình. <br> Mình là Tom
+                lập trình viên trẻ từ No.01 Studio.<br>
+            </p>
+        </div>
+    </div>
+
+    <!-- Secret Endings Popup -->
+    <div id="secret-popup" class="popup-overlay">
+        <div class="popup-content pixel-frame">
+            <span class="close-btn">&times;</span>
+            <h3 class="popup-title glitch" data-text="BÍ MẬT BỊ CHÔN VÙI">BÍ MẬT BỊ CHÔN VÙI</h3>
+            <ul class="secret-endings-list">
+                <li><strong>Kết cục 1 (nơi mọi thứ bắt đầu):</strong>tiêu diệt toàn bộ bất kể thiện ác và vòng lặp sẽ
+                    lại được bắt đầu thứ bạn săn giết giờ đây sẽ luôn là một phần của bạn mãi mãi...</li>
+                <li><strong>Kết cục 2 (kết cục của kẻ ngoại lai):</strong>ko nơi nào chứa chấp ngươi khu rừng ko chào
+                    đón những kẻ ko tuân theo quy tắc </li>
+                <li><strong>Kết cục 3 (?!#!#!?%#!@?):</strong>DỪNG TIN BẤT KÌ AI!!!</li>
+            </ul>
+            <p class="popup-footer-text">cái giá của việc biết trước kết cục chưa bao giờ là miễn phí, mọi thứ đều ko
+                thoát khỏi luật nhân quả.</p>
+        </div>
+    </div>
+
+    <!-- Inventory Panel -->
+    <div id="inventory-panel" class="pixel-frame">
+        <div class="inventory-title">VẬT TẾ</div>
+        <div class="inventory-slots">
+            <div class="inventory-slot" data-slot="talisman" title="Bùa Hộ Mệnh">
+                <span class="slot-icon">📜</span>
+            </div>
+            <div class="inventory-slot" data-slot="oil" title="Bình Dầu Thắp">
+                <span class="slot-icon">🪔</span>
+            </div>
+            <div class="inventory-slot" data-slot="key" title="Chiếc Chìa Khóa Gỉ">
+                <span class="slot-icon">🔑</span>
+            </div>
+            <div class="inventory-slot" data-slot="censer" title="Lư Hương Cổ">
+                <span class="slot-icon">🏺</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ritual Corrupt Popup -->
+    <div id="ritual-corrupt-popup" class="popup-overlay">
+        <div class="popup-content pixel-frame ritual-corrupt-content">
+            <h3 class="popup-title glitch" data-text="KẾT CỤC THỨ 5: VẬT TẾ LỄ">KẾT CỤC THỨ 5: VẬT TẾ LỄ</h3>
+            <p class="corrupt-text">
+                Nghi lễ đã hoàn tất...<br>
+                Bạn đã thu thập đủ 4 vật tế linh thiêng:<br>
+                <span class="highlight">Bùa Hộ Mệnh</span>, <span class="highlight">Bình Dầu Thắp</span>, <span
+                    class="highlight">Chiếc Chìa Khóa Gỉ</span>, và <span class="highlight">Lư Hương Cổ</span>.<br>
+                Màn sương dày đặc đang khép lại.<br>
+                Giờ đây, bạn chính là <strong>vật phẩm thứ 5</strong> dâng lên thần rừng.<br>
+            </p>
+            <button class="btn-primary glitch-btn" id="restart-loop-btn">Bắt Đầu Lại Vòng Lặp</button>
+        </div>
+    </div>
+
+    <audio id="ritual-sound" src="https://assets.mixkit.co/active_storage/sfx/2569/2569-preview.mp3"
+        preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
