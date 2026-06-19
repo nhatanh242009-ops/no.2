@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function triggerRitualEnding() {
         document.body.classList.add('shake-effect');
         document.body.classList.add('corrupt-active');
-        
+
         if (ritualSound) {
             ritualSound.currentTime = 0;
             ritualSound.play().catch(e => console.log('Audio play prevented', e));
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!collectedItems.includes(itemId)) {
             collectedItems.push(itemId);
             localStorage.setItem('collectedItems', JSON.stringify(collectedItems));
-            
+
             // Play pick up sound (using clickSound)
             clickSound.currentTime = 0;
             clickSound.play().catch(e => console.log(e));
