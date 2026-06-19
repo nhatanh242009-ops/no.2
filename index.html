@@ -31,6 +31,7 @@
             <path d="M100,100 Q80,85 75,70 M100,100 Q85,95 70,92" stroke="rgba(200, 0, 0, 0.6)" stroke-width="0.8"
                 fill="none" class="blood-vein" />
         </svg>
+
     </div>
 
     <nav id="navbar">
@@ -208,6 +209,15 @@
         preload="auto"></audio>
 
     <script src="script.js"></script>
+    <audio id="bgm" loop hidden>
+        <source src="leberch-horror-music-box-375927.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener("click", () => {
+            document.getElementById("bgm").play();
+        }, { once: true });
+    </script>
 </body>
 
 </html>
