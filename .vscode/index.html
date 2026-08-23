@@ -138,9 +138,6 @@
         preload="auto"></audio>
     <audio id="click-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
         preload="auto"></audio>
-    <audio id="bgm" loop hidden>
-        <source src="leberch-horror-music-box-375927.mp3" type="audio/mpeg">
-    </audio>
 
     <!-- Demo Popup -->
     <div id="demo-popup" class="popup-overlay">
@@ -212,6 +209,15 @@
         preload="auto"></audio>
 
     <script src="script.js"></script>
+    <audio id="bgm" loop hidden>
+        <source src="leberch-horror-music-box-375927.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener("click", () => {
+            document.getElementById("bgm").play();
+        }, { once: true });
+    </script>
 </body>
 
 </html>

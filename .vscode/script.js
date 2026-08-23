@@ -1,51 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Navbar Scroll Effect + Parallax (merged for performance)
+    // 1. Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
-    const hero = document.getElementById('hero');
     window.addEventListener('scroll', () => {
-        const scrollPos = window.scrollY;
-
-        // Navbar effect
-        if (scrollPos > 50) {
+        if (window.scrollY > 50) {
             navbar.style.background = 'rgba(0, 0, 0, 0.95)';
             navbar.style.borderBottom = '1px solid #1a1a1a';
         } else {
             navbar.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.9), transparent)';
             navbar.style.borderBottom = 'none';
         }
-
-        // Parallax hero
-        hero.style.backgroundPositionY = `${scrollPos * 0.4}px`;
     });
 
     // 2. Audio Effects
     const hoverSound = document.getElementById('hover-sound');
     const clickSound = document.getElementById('click-sound');
 
-    // Lower volumes (with null-checks)
-    if (hoverSound) hoverSound.volume = 0.2;
-    if (clickSound) clickSound.volume = 0.4;
+    // Lower volumes
+    hoverSound.volume = 0.2;
+    clickSound.volume = 0.4;
 
     const interactiveElements = document.querySelectorAll('button, a, .feature-card, .pixel-frame');
 
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            if (hoverSound) {
-                hoverSound.currentTime = 0;
-                hoverSound.play().catch(e => console.log('Audio play prevented by browser', e));
-            }
+            // Play hover sound, reset time if already playing
+            hoverSound.currentTime = 0;
+            hoverSound.play().catch(e => console.log('Audio play prevented by browser', e));
         });
 
         el.addEventListener('click', () => {
-            if (clickSound) {
-                clickSound.currentTime = 0;
-                clickSound.play().catch(e => console.log('Audio play prevented by browser', e));
-            }
+            clickSound.currentTime = 0;
+            clickSound.play().catch(e => console.log('Audio play prevented by browser', e));
         });
     });
 
-    // 3. Glitch Button Effect (Random mild glitching)
+    // 3. Parallax Effect for Hero
+    const hero = document.getElementById('hero');
+    window.addEventListener('scroll', () => {
+        let scrollPos = window.scrollY;
+        // Move the background slightly based on scroll
+        hero.style.backgroundPositionY = `${scrollPos * 0.4}px`;
+    });
+
+    // 4. Glitch Button Effect (Random mild glitching)
     const playBtn = document.getElementById('play-btn');
     setInterval(() => {
         if (Math.random() > 0.8) {
@@ -86,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- SECRET POPUP LOGIC ---
     const secretText = document.querySelector('.hidden-secret');
     const secretPopup = document.getElementById('secret-popup');
-    const closeBtn = document.querySelector('#secret-popup .close-btn');
+    const closeBtn = document.querySelector('.close-btn');
 
     if (secretText && secretPopup) {
         // Mở popup khi double click vào dòng chữ ẩn
@@ -155,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- RITUAL MINI-GAME LOGIC ---
-    let collectedItems;
     try {
         collectedItems = JSON.parse(localStorage.getItem('collectedItems')) || [];
         // Map old 'doll' value to 'censer' for backward-compatibility
@@ -321,13 +318,5 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             triggerRitualEnding();
         }, 1000);
-    }
-
-    // --- BGM AUTO-PLAY LOGIC ---
-    const bgm = document.getElementById('bgm');
-    if (bgm) {
-        document.addEventListener('click', () => {
-            bgm.play().catch(e => console.log('BGM play prevented', e));
-        }, { once: true });
     }
 });
