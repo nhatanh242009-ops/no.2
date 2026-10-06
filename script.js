@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Navbar Scroll Effect + Parallax (merged for performance)
+    // === HIỆU ỨNG NAVBAR & PARALLAX ===
     const navbar = document.getElementById('navbar');
     const hero = document.getElementById('hero');
     window.addEventListener('scroll', () => {
         const scrollPos = window.scrollY;
 
-        // Navbar effect
+        // Đổi nền navbar khi cuộn
         if (scrollPos > 50) {
             navbar.style.background = 'rgba(0, 0, 0, 0.95)';
             navbar.style.borderBottom = '1px solid #1a1a1a';
@@ -15,15 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.style.borderBottom = 'none';
         }
 
-        // Parallax hero
+        // Hiệu ứng parallax cho banner
         hero.style.backgroundPositionY = `${scrollPos * 0.4}px`;
     });
 
-    // 2. Audio Effects
+    // === ÂM THANH ===
     const hoverSound = document.getElementById('hover-sound');
     const clickSound = document.getElementById('click-sound');
 
-    // Lower volumes (with null-checks)
+    // Giảm âm lượng mặc định
     if (hoverSound) hoverSound.volume = 0.2;
     if (clickSound) clickSound.volume = 0.4;
 
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Glitch Button Effect (Random mild glitching)
+    // === HIỆU ỨNG GLITCH NÚT CHƠI ===
     const playBtn = document.getElementById('play-btn');
     setInterval(() => {
         if (Math.random() > 0.8) {
@@ -56,16 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 2000);
 
-    // Dynamic Image Loading (To be replaced with actual generated images later)
-    // Here we can set paths manually if needed.
-
-    // --- DEMO POPUP LOGIC ---
-    const playBtnDemo = document.getElementById('play-btn');
+    // === POPUP THÔNG BÁO DEMO ===
     const demoPopup = document.getElementById('demo-popup');
     const closeDemoBtn = document.querySelector('.close-demo-btn');
 
-    if (playBtnDemo && demoPopup) {
-        playBtnDemo.addEventListener('click', (e) => {
+    if (playBtn && demoPopup) {
+        playBtn.addEventListener('click', (e) => {
             e.preventDefault();
             demoPopup.classList.add('show');
         });
@@ -83,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- SECRET POPUP LOGIC ---
+    // === POPUP BÍ MẬT ===
     const secretText = document.querySelector('.hidden-secret');
     const secretPopup = document.getElementById('secret-popup');
     const closeBtn = document.querySelector('#secret-popup .close-btn');
@@ -92,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mở popup khi double click vào dòng chữ ẩn
         secretText.addEventListener('dblclick', () => {
             secretPopup.classList.add('show');
-            // Play a creepy sound if needed
+            // Phát âm thanh rùng rợn
             clickSound.currentTime = 0;
             clickSound.play().catch(e => console.log(e));
         });
@@ -110,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- REVEAL EXPLORER HINT LOGIC ---
+    // === HIỆN GỢI Ý ẨN ===
     const explorerHint = document.querySelector('.explorer-hint');
     if (explorerHint) {
         explorerHint.addEventListener('dblclick', () => {
@@ -120,23 +116,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LANTERN EFFECT LOGIC ---
+    // === HIỆU ỨNG ĐÈN LỒNG ===
     const lanternOverlay = document.getElementById('lantern-overlay');
     if (lanternOverlay) {
-        // Track mouse move and update custom CSS variables
+        // Theo dõi chuột để di chuyển vùng sáng
         window.addEventListener('mousemove', (e) => {
             lanternOverlay.style.setProperty('--lantern-x', `${e.clientX}px`);
             lanternOverlay.style.setProperty('--lantern-y', `${e.clientY}px`);
         });
 
-        // Initialize lantern position to center of screen before mouse moves
+        // Vị trí mặc định ở giữa màn hình
         lanternOverlay.style.setProperty('--lantern-x', '50%');
         lanternOverlay.style.setProperty('--lantern-y', '50%');
 
-        // Flicker effect (randomly dim the lantern to simulate an old, failing lamp)
+        // Hiệu ứng nhấp nháy ngẫu nhiên (mô phỏng đèn dầu cũ)
         setInterval(() => {
-            if (Math.random() > 0.9) { // 10% chance every 1.2s
-                // Fast double flicker
+            if (Math.random() > 0.9) { // 10% xác suất mỗi 1.2 giây
+                // Nhấp nháy nhanh 2 lần
                 lanternOverlay.style.opacity = '0.35';
                 setTimeout(() => {
                     lanternOverlay.style.opacity = '1';
@@ -154,11 +150,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1200);
     }
 
-    // --- RITUAL MINI-GAME LOGIC ---
+    // === HỆ THỐNG THU THẬP VẬT TẾ ===
     let collectedItems;
     try {
         collectedItems = JSON.parse(localStorage.getItem('collectedItems')) || [];
-        // Map old 'doll' value to 'censer' for backward-compatibility
+        // Chuyển đổi giá trị cũ 'doll' → 'censer' để tương thích ngược
         const dollIndex = collectedItems.indexOf('doll');
         if (dollIndex !== -1) {
             collectedItems[dollIndex] = 'censer';
@@ -175,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const restartLoopBtn = document.getElementById('restart-loop-btn');
     const ritualSound = document.getElementById('ritual-sound');
 
-    // Lower volume for ritual sound
+    // Giảm âm lượng âm thanh nghi lễ
     if (ritualSound) {
         ritualSound.volume = 0.6;
     }
@@ -183,32 +179,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateInventoryUI() {
         inventorySlots.forEach(slot => {
             const slotId = slot.getAttribute('data-slot');
-            if (collectedItems.includes(slotId)) {
-                slot.classList.add('collected');
-            } else {
-                slot.classList.remove('collected');
-            }
+            slot.classList.toggle('collected', collectedItems.includes(slotId));
         });
 
-        if (collectedItems.length === 4) {
-            if (inventoryPanel) {
-                inventoryPanel.classList.add('ritual-ready');
-            }
-        } else {
-            if (inventoryPanel) {
-                inventoryPanel.classList.remove('ritual-ready');
-            }
+        if (inventoryPanel) {
+            inventoryPanel.classList.toggle('ritual-ready', collectedItems.length === 4);
         }
     }
 
     function hideCollectedItemsFromPage() {
         ritualItems.forEach(item => {
             const itemId = item.getAttribute('data-id');
-            if (collectedItems.includes(itemId)) {
-                item.classList.add('collected-hidden');
-            } else {
-                item.classList.remove('collected-hidden');
-            }
+            item.classList.toggle('collected-hidden', collectedItems.includes(itemId));
         });
     }
 
@@ -221,23 +203,63 @@ document.addEventListener('DOMContentLoaded', () => {
             ritualSound.play().catch(e => console.log('Audio play prevented', e));
         }
 
+        // Cuộn lên đầu trang để người chơi thấy popup
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Dừng rung lắc trước khi hiện popup (transform trên body phá vỡ position:fixed)
         setTimeout(() => {
+            document.body.classList.remove('shake-effect');
+
             if (corruptPopup) {
                 corruptPopup.classList.add('show');
+
+                // Hiện từng dòng chữ một
+                const lines = corruptPopup.querySelectorAll('.corrupt-line');
+                lines.forEach(line => {
+                    const delay = parseInt(line.getAttribute('data-delay')) || 0;
+                    setTimeout(() => {
+                        line.classList.add('revealed');
+                    }, delay);
+                });
+
+                // Hiện đếm ngược, sau đó hiện nút restart
+                const countdown = corruptPopup.querySelector('.ritual-countdown');
+                const restartBtn = corruptPopup.querySelector('#restart-loop-btn');
+                const countdownNumber = corruptPopup.querySelector('.countdown-number');
+
+                const countdownDelay = 5200;
+                setTimeout(() => {
+                    if (countdown) countdown.classList.add('revealed');
+
+                    // Đếm ngược từ 5 về 0
+                    if (countdownNumber) {
+                        let count = 5;
+                        const countInterval = setInterval(() => {
+                            count--;
+                            countdownNumber.textContent = count;
+                            if (count <= 0) {
+                                clearInterval(countInterval);
+                                // Ẩn đếm ngược, hiện nút bắt đầu lại
+                                if (countdown) countdown.classList.add('finished');
+                                if (restartBtn) restartBtn.classList.add('revealed');
+                            }
+                        }, 1000);
+                    }
+                }, countdownDelay);
             }
-        }, 1500);
+        }, 800);
     }
 
     function showNotification(itemName) {
-        // Trigger blood flash effect
+        // Hiệu ứng loé máu
         const bloodOverlay = document.getElementById('blood-overlay');
         if (bloodOverlay) {
             bloodOverlay.classList.remove('flash');
-            void bloodOverlay.offsetWidth; // Force reflow to restart animation
+            void bloodOverlay.offsetWidth; // Ép reflow để chạy lại animation
             bloodOverlay.classList.add('flash');
         }
 
-        // Remove existing notification if any
+        // Xoá thông báo cũ nếu có
         const oldNotif = document.querySelector('.ritual-notification');
         if (oldNotif) {
             oldNotif.remove();
@@ -248,12 +270,12 @@ document.addEventListener('DOMContentLoaded', () => {
         notification.innerText = `Vật tế lễ [${itemName}] đã được dâng lên...`;
         document.body.appendChild(notification);
 
-        // Slide down and fade in
+        // Trượt xuống và hiện ra
         setTimeout(() => {
             notification.classList.add('show');
         }, 10);
 
-        // Fade out and remove
+        // Mờ dần và xoá
         setTimeout(() => {
             notification.classList.remove('show');
             setTimeout(() => {
@@ -267,16 +289,22 @@ document.addEventListener('DOMContentLoaded', () => {
             collectedItems.push(itemId);
             localStorage.setItem('collectedItems', JSON.stringify(collectedItems));
 
-            // Play pick up sound (using clickSound)
+            // Phát âm thanh nhặt vật phẩm
             clickSound.currentTime = 0;
             clickSound.play().catch(e => console.log(e));
 
-            // Visual feedback on element
+            // Ẩn vật phẩm đã thu thập
             if (element) {
                 element.classList.add('collected-hidden');
             }
 
-            const itemName = element ? element.getAttribute('title') : (itemId === 'talisman' ? 'Bùa Hộ Mệnh' : (itemId === 'oil' ? 'Bình Dầu Thắp' : (itemId === 'key' ? 'Chiếc Chìa Khóa Gỉ' : 'Lư Hương Cổ')));
+            const ITEM_NAMES = {
+                talisman: 'cuộn văn tế',
+                oil: 'Thuỷ ngâm',
+                key: 'chìa khoá phòng tế',
+                censer: 'bình chứa???'
+            };
+            const itemName = element ? element.getAttribute('title') : (ITEM_NAMES[itemId] || itemId);
             showNotification(itemName);
 
             updateInventoryUI();
@@ -284,21 +312,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (collectedItems.length === 4) {
                 setTimeout(() => {
                     triggerRitualEnding();
-                }, 1200); // Small delay after picking up the last item
+                }, 1200); // Delay nhỏ sau khi nhặt vật phẩm cuối
             }
         }
     }
 
-    // Bind click events to items
+    // Gán sự kiện click cho các vật phẩm
     ritualItems.forEach(item => {
         item.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent double click event from propagating to hint
+            e.stopPropagation(); // Ngăn sự kiện lan tới explorer-hint
             const itemId = item.getAttribute('data-id');
             collectItem(itemId, item);
         });
     });
 
-    // Restart Loop action
+    // === XỬ LÝ NÚT BẮT ĐẦU LẠI ===
     if (restartLoopBtn) {
         restartLoopBtn.addEventListener('click', () => {
             localStorage.removeItem('collectedItems');
@@ -307,23 +335,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (corruptPopup) {
                 corruptPopup.classList.remove('show');
             }
-            // Reload page to start fresh
+            // Tải lại trang
             window.location.reload();
         });
     }
 
-    // Initialize state on load
+    // === KHỞI TẠO TRẠNG THÁI BAN ĐẦU ===
     updateInventoryUI();
     hideCollectedItemsFromPage();
 
-    // If already collected all, trigger ending on load after a brief delay
+    // Nếu đã thu thập đủ 4 vật → kích hoạt kết cục khi tải trang
     if (collectedItems.length === 4) {
         setTimeout(() => {
             triggerRitualEnding();
         }, 1000);
     }
 
-    // --- BGM AUTO-PLAY LOGIC ---
+    // === NHẠC NỀN TỰ ĐỘNG ===
     const bgm = document.getElementById('bgm');
     if (bgm) {
         document.addEventListener('click', () => {

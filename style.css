@@ -1,4 +1,4 @@
-/* ===== CSS VARIABLES ===== */
+/* ===== BIẾN CSS ===== */
 :root {
     --bg-color: #070908;
     --text-primary: #dcdcdc;
@@ -11,13 +11,13 @@
     --font-body: 'Inter', sans-serif;
 }
 
-/* ===== RESET & GLOBAL ===== */
+/* ===== RESET & TOÀN CỤC ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     cursor: crosshair;
-    /* Spooky cursor */
+    /* Con trỏ hình chữ thập */
 }
 
 html {
@@ -32,7 +32,7 @@ body {
     line-height: 1.6;
 }
 
-/* ===== NOISE OVERLAY ===== */
+/* ===== LỚP NHIỄU HẠT ===== */
 #noise-overlay {
     position: fixed;
     top: 0;
@@ -45,7 +45,7 @@ body {
     background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
 }
 
-/* ===== LANTERN OVERLAY ===== */
+/* ===== LỚP ĐÈN LỒNG ===== */
 #lantern-overlay {
     position: fixed;
     top: 0;
@@ -54,7 +54,7 @@ body {
     height: 100vh;
     pointer-events: none;
     z-index: 9998;
-    /* Just below #noise-overlay */
+    /* Ngay dưới lớp nhiễu */
     background: radial-gradient(circle at var(--lantern-x, 50%) var(--lantern-y, 50%),
             rgba(253, 184, 19, 0.06) 0px,
             rgba(139, 0, 0, 0.02) 120px,
@@ -68,7 +68,7 @@ body {
     }
 }
 
-/* ===== TYPOGRAPHY ===== */
+/* ===== KIỂU CHỮ ===== */
 h1,
 h2,
 h3,
@@ -86,7 +86,7 @@ h3,
     text-shadow: 2px 2px 0px #000;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== THANH ĐIỀU HƯỚNG ===== */
 #navbar {
     position: fixed;
     top: 0;
@@ -123,7 +123,7 @@ h3,
     color: var(--accent-red);
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== BANNER CHÍNH ===== */
 #hero {
     height: 100vh;
     display: flex;
@@ -159,7 +159,7 @@ h3,
     font-style: italic;
 }
 
-/* GLITCH EFFECT */
+/* HIỆU ỨNG GLITCH */
 .glitch {
     position: relative;
 }
@@ -288,7 +288,7 @@ h3,
     }
 }
 
-/* BUTTONS */
+/* NÚT BẤM */
 .btn-primary {
     background-color: transparent;
     color: var(--accent-red);
@@ -324,7 +324,7 @@ h3,
     left: 100%;
 }
 
-/* FOG EFFECT */
+/* HIỆU ỨNG SƯƠNG MÙ */
 .fog-container {
     position: absolute;
     width: 100%;
@@ -366,7 +366,7 @@ h3,
     }
 }
 
-/* ===== LAYOUT & SECTIONS ===== */
+/* ===== BỐ CỤC & CÁC PHẦN ===== */
 .section {
     padding: 6rem 2rem;
     position: relative;
@@ -383,7 +383,7 @@ h3,
     margin: 0 auto;
 }
 
-/* PIXEL FRAME UTILITY */
+/* KHUNG PIXEL */
 .pixel-frame {
     border: 4px solid #1a1a1a;
     padding: 4px;
@@ -402,10 +402,10 @@ h3,
     height: auto;
     display: block;
     image-rendering: pixelated;
-    /* Forces pixel art scaling */
+    /* Giữ nét pixel khi phóng to */
 }
 
-/* ABOUT SECTION */
+/* PHẦN GIỚI THIỆU */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -440,7 +440,7 @@ h3,
     border-left: 2px solid rgba(139, 0, 0, 0.4);
 }
 
-/* FEATURES SECTION */
+/* PHẦN TÍNH NĂNG */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -454,7 +454,7 @@ h3,
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
-    /* Added for absolute positioning of ritual items */
+    /* Dùng cho vị trí tuyệt đối của vật phẩm */
 }
 
 .feature-card:hover {
@@ -471,7 +471,6 @@ h3,
 
 .feature-card h3 {
     font-size: 0.9rem;
-    color: var(--text-primary);
     margin-bottom: 1rem;
     color: var(--accent-red);
 }
@@ -481,7 +480,7 @@ h3,
     color: var(--text-muted);
 }
 
-/* GALLERY SECTION */
+/* PHẦN THƯ VIỆN ẢNH */
 .gallery-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -491,17 +490,17 @@ h3,
 .gallery-item {
     position: relative;
     overflow: hidden;
-    /* Restrict key slide-out within the frame */
+    /* Giữ chìa khoá trong khung ảnh */
 }
 
-/* FOOTER */
+/* CHÂN TRANG */
 footer {
     background-color: #020202;
     padding: 3rem 0;
     text-align: center;
     border-top: 1px solid var(--accent-red);
     position: relative;
-    /* For absolute positioning of ritual items */
+    /* Dùng cho vị trí tuyệt đối của vật phẩm */
 }
 
 footer p {
@@ -518,10 +517,10 @@ footer .warning-text {
     font-size: 0.9rem;
 }
 
-/* EASTER EGG */
+/* TRỨNG PHỤC SINH - CHỮ ẨN */
 .hidden-secret {
     color: #000;
-    /* Almost invisible against background */
+    /* Gần như vô hình trên nền tối */
     font-size: 0.6rem;
     opacity: 0.1;
     margin-top: 1rem;
@@ -538,7 +537,7 @@ footer .warning-text {
     opacity: 0.3;
 }
 
-/* SECRET POPUP */
+/* POPUP BÍ MẬT */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -656,7 +655,7 @@ footer .warning-text {
     font-weight: bold;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE - THIẾT BỊ DI ĐỘNG */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -673,9 +672,9 @@ footer .warning-text {
     }
 }
 
-/* ===== RITUAL MINI-GAME STYLES ===== */
+/* ===== PHONG CÁCH HỆ THỐNG VẬT TẾ ===== */
 
-/* 1. General Ritual Items */
+/* 1. Vật phẩm tế lễ - chung */
 .ritual-item {
     cursor: pointer;
     font-size: 1.5rem;
@@ -695,7 +694,7 @@ footer .warning-text {
     transform: scale(0) !important;
 }
 
-/* 2. Specific Item Positions */
+/* 2. Vị trí từng vật phẩm */
 #item-talisman {
     margin-left: 10px;
     vertical-align: middle;
@@ -764,13 +763,13 @@ footer .warning-text {
     }
 }
 
-/* 3. Inventory Panel */
+/* 3. Bảng vật phẩm */
 #inventory-panel {
     position: fixed;
     bottom: 20px;
     left: 20px;
     z-index: 9990;
-    /* Right below overlays */
+    /* Ngay dưới các lớp phủ */
     background-color: #080202;
     border: 3px solid #3a0000;
     padding: 12px 16px;
@@ -855,7 +854,7 @@ footer .warning-text {
     }
 }
 
-/* 4. Screen Shaking and Corrupt State */
+/* 4. Hiệu ứng rung và trạng thái tha hoá */
 body.shake-effect {
     animation: screen-shake 0.15s infinite;
 }
@@ -914,37 +913,294 @@ body.corrupt-active #lantern-overlay {
     opacity: 1 !important;
 }
 
-/* 5. Ritual Corrupt Popup Customization */
+/* 5. Popup nghi lễ hiến tế */
+.ritual-phase-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Biểu tượng nghi lễ bay xung quanh */
+.ritual-symbols-container {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-symbol {
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
+    animation: none;
+}
+
+.popup-overlay.show .floating-symbol {
+    animation: symbol-orbit 8s linear infinite, symbol-fade-in 1.5s ease forwards;
+}
+
+.floating-symbol:nth-child(1) {
+    animation-delay: 0s, 0s;
+}
+
+.floating-symbol:nth-child(2) {
+    animation-delay: -2s, 0.3s;
+}
+
+.floating-symbol:nth-child(3) {
+    animation-delay: -4s, 0.6s;
+}
+
+.floating-symbol:nth-child(4) {
+    animation-delay: -6s, 0.9s;
+}
+
+@keyframes symbol-orbit {
+    0% {
+        top: 50%;
+        left: 0%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    25% {
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    50% {
+        top: 50%;
+        left: 100%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    75% {
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    100% {
+        top: 50%;
+        left: 0%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes symbol-fade-in {
+    0% {
+        opacity: 0;
+        filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    }
+
+    100% {
+        opacity: 0.7;
+        filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
+    }
+}
+
+/* Biểu tượng ngũ giác */
+.ritual-pentagram {
+    font-size: 3rem;
+    color: #ff0000;
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: pentagram-spin 10s linear infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.9));
+    opacity: 0;
+}
+
+.popup-overlay.show .ritual-pentagram {
+    animation: pentagram-spin 10s linear infinite, pentagram-appear 1s 0.5s ease forwards;
+}
+
+@keyframes pentagram-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pentagram-appear {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.3);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+/* Nội dung popup */
 .ritual-corrupt-content {
     background: #080000 !important;
     border-color: #ff0000 !important;
     box-shadow: 0 0 50px rgba(255, 0, 0, 0.6), 8px 8px 0px rgba(0, 0, 0, 0.9) !important;
     text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    padding: 2.5rem 3rem !important;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.ritual-corrupt-content .corrupt-text {
+.popup-overlay.show .ritual-corrupt-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Hiệu ứng chữ hiện từng dòng */
+.corrupt-text-container {
+    margin-bottom: 1.5rem;
+}
+
+.corrupt-line {
     font-family: 'Courier New', Courier, monospace;
     color: #ff4d4d;
     font-weight: bold;
     line-height: 1.8;
     font-size: 1.05rem;
-    margin-bottom: 2.5rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    margin-bottom: 0.5rem;
 }
 
-.ritual-corrupt-content .corrupt-text .highlight {
+.corrupt-line.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.corrupt-line.final-line {
+    color: #ff0000;
+    font-size: 1.15rem;
+    margin-top: 1rem;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6), 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.corrupt-line.final-line strong {
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 1);
+    animation: text-pulse 1s infinite alternate;
+}
+
+/* Dòng hiển thị vật phẩm */
+.ritual-items-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0.8rem 0;
+}
+
+.ritual-corrupt-content .corrupt-text-container .highlight {
     color: #ff0000;
     text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
     font-family: var(--font-heading);
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     display: inline-block;
-    margin: 0 3px;
+    padding: 4px 10px;
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    background: rgba(255, 0, 0, 0.08);
+    margin: 2px;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+.corrupt-line.revealed .highlight {
+    animation: highlight-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes highlight-glow {
+    0% {
+        border-color: rgba(255, 0, 0, 0.4);
+        box-shadow: 0 0 0px rgba(255, 0, 0, 0);
+    }
+
+    100% {
+        border-color: rgba(255, 0, 0, 0.9);
+        box-shadow: 0 0 12px rgba(255, 0, 0, 0.4);
+    }
+}
+
+/* Bộ đếm ngược */
+.ritual-countdown {
+    margin: 1.5rem 0 1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ritual-countdown.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ritual-countdown.finished {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+.countdown-text {
+    font-family: 'Courier New', Courier, monospace;
+    color: #888;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.countdown-number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #ff0000;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    animation: countdown-pulse 1s infinite;
+}
+
+@keyframes countdown-pulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+}
+
+/* Nút bắt đầu lại — ẩn ban đầu */
 #restart-loop-btn {
     border-color: #ff0000 !important;
     color: #ff0000 !important;
     box-shadow: 4px 4px 0px #000;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease,
+        background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#restart-loop-btn.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 #restart-loop-btn:hover {
@@ -953,14 +1209,14 @@ body.corrupt-active #lantern-overlay {
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 4px 4px 0px #000 !important;
 }
 
-/* 6. Ritual Notifications */
+/* 6. Thông báo thu thập vật phẩm */
 .ritual-notification {
     position: fixed;
     top: 10%;
     left: 50%;
     transform: translate(-50%, -20px);
     z-index: 10005;
-    /* Must be above the noise and overlays */
+    /* Phải ở trên các lớp phủ */
     background: #0d0000;
     color: #ff1a1a;
     border: 2px solid #ff0000;
@@ -982,7 +1238,7 @@ body.corrupt-active #lantern-overlay {
     transform: translate(-50%, 0);
 }
 
-/* 7. Blood Splatter Overlay & Veins */
+/* 7. Lớp phủ máu & mạch máu */
 #blood-overlay {
     position: fixed;
     top: 0;
@@ -991,7 +1247,7 @@ body.corrupt-active #lantern-overlay {
     height: 100vh;
     pointer-events: none;
     z-index: 9997;
-    /* Just under overlays and above base content */
+    /* Dưới lớp phủ, trên nội dung */
     box-shadow: inset 0 0 0px rgba(255, 0, 0, 0);
     transition: box-shadow 0.3s ease;
     opacity: 0;
